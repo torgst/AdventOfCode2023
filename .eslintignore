@@ -1,0 +1,15 @@
+# don't ever lint node_modules
+node_modules
+# don't lint build output (make sure it's set to your correct build folder name)
+dist
+lib
+# don't lint localization files from SPFx
+loc
+# Ignore these js-files that are meant to run in the NODE-environment, as several lint-rules does not apply to them
+gulpfile.js
+build.config.js
+setup.js
+# dont lint typings, they are probably auto generated anyway
+*.d.ts
+# don't lint static files, they are what they are
+static

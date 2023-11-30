@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2020",
+    "jsx": "react",
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "noEmit": false,
+    "keyofStringsOnly": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts",
+    "dist",
+    "lib",
+    "wpbundles",
+    "build",
+    "deploy"
+  ]
+}
