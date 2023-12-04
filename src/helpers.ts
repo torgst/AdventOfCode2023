@@ -1,14 +1,14 @@
 import { appendFileSync, readFileSync, writeFileSync } from "fs";
 
 export function logJsonPretty(...values: unknown[]) {
-  console.log(values);
+  console.log(JSON.stringify({ ...values }, null, 2));
   appendFileSync(
     `${__dirname}/output.log`,
     JSON.stringify({ ...values }, null, 2) + "\n",
   );
 }
 export function logJson(...values: unknown[]) {
-  console.log(values);
+  console.log(JSON.stringify({ ...values }));
   appendFileSync(
     `${__dirname}/output.log`,
     JSON.stringify({ ...values }) + "\n",
