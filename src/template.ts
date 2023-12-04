@@ -1,4 +1,4 @@
-import { handleLines, logJson } from "./helpers";
+import { handleLines, logJson, logString } from "./helpers";
 
 let sum = 0;
 function handleLine(line: string) {
@@ -10,4 +10,4 @@ handleLines(
   `
 `,
 );
-console.log("Result: " + sum);
+logString("Result: " + sum);
