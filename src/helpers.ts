@@ -32,12 +32,15 @@ export function handleLines(
     handleLine(line, index, lines);
   }
 }
+export function clearLog() {
+  writeFileSync(`${__dirname}/output.log`, "");
+}
 export function getData(
   filename: `${number}${number}-${number}`,
   testData?: string,
 ) {
   const data =
     testData ?? readFileSync(`${__dirname}/../data/${filename}.txt`, "utf-8");
-  writeFileSync(`${__dirname}/output.log`, "");
+  clearLog();
   return data;
 }
