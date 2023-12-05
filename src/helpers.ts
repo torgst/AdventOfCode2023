@@ -1,17 +1,20 @@
 import { appendFileSync, readFileSync, writeFileSync } from "fs";
 
 export function logJsonPretty(...values: unknown[]) {
-  console.log(JSON.stringify(values, null, 2));
+  console.log(...values.map((v) => JSON.stringify(v, null, 2)));
   appendFileSync(
     `${__dirname}/output.log`,
-    JSON.stringify(values, null, 2) + "\n",
+    values.map((v) => JSON.stringify(v, null, 2)).join("\t") + "\n",
   );
 }
 export function logJson(...values: unknown[]) {
-  console.log(JSON.stringify(values));
-  appendFileSync(`${__dirname}/output.log`, JSON.stringify(values) + "\n");
+  console.log(...values.map((v) => JSON.stringify(v)));
+  appendFileSync(
+    `${__dirname}/output.log`,
+    values.map((v) => JSON.stringify(v)).join("\t") + "\n",
+  );
 }
-export function logString(value: string | undefined) {
+export function logString(value: string | number | undefined) {
   console.log(value);
   appendFileSync(`${__dirname}/output.log`, value + "\n");
 }
@@ -20,9 +23,7 @@ export function handleLines(
   handleLine: (line: string, index: number, lines: string[]) => void,
   testData?: string,
 ) {
-  const data =
-    testData ?? readFileSync(`${__dirname}/../data/${filename}.txt`, "utf-8");
-  writeFileSync(`${__dirname}/output.log`, "");
+  const data = getData(filename, testData);
   let index = -1;
   const lines = data.split("\n");
   for (const line of lines) {
@@ -30,4 +31,13 @@ export function handleLines(
     if (!line.trim()) continue;
     handleLine(line, index, lines);
   }
+}
+export function getData(
+  filename: `${number}${number}-${number}`,
+  testData?: string,
+) {
+  const data =
+    testData ?? readFileSync(`${__dirname}/../data/${filename}.txt`, "utf-8");
+  writeFileSync(`${__dirname}/output.log`, "");
+  return data;
 }
