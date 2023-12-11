@@ -1,13 +1,11 @@
-import { handleLines, logJson, logString } from "./helpers";
+import { getData, logString } from "./helpers";
 
+const testData = `
+`;
 let sum = 0;
-function handleLine(line: string) {
-  logJson({ sum });
+const data = getData("10-1", testData);
+const lines = data.split("\n");
+for (const line of lines) {
+  if (!line.trim()) continue;
 }
-handleLines(
-  "03-1",
-  handleLine,
-  `
-`,
-);
 logString("Result: " + sum);
